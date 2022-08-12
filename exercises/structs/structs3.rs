@@ -14,7 +14,7 @@ struct Package {
 impl Package {
     fn new(sender_country: String, recipient_country: String, weight_in_grams: i32) -> Package {
         if weight_in_grams <= 0 {
-            panic!("ohooooo");
+            panic!("Can not ship a weightless package.")
         } else {
             Package {
                 sender_country,

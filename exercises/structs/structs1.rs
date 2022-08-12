@@ -10,7 +10,7 @@ struct ColorClassicStruct {
 struct ColorTupleStruct(/* TODO: Something goes here */ String, String);
 
 #[derive(Debug)]
-struct UnitStruct;
+struct UnitLikeStruct;
 
 #[cfg(test)]
 mod tests {
@@ -24,8 +24,9 @@ mod tests {
             hex: "#00FF00".to_string(),
         };
 
-        assert_eq!(green.name, "green");
-        assert_eq!(green.hex, "#00FF00");
+        assert_eq!(green.red, 0);
+        assert_eq!(green.green, 255);
+        assert_eq!(green.blue, 0);
     }
 
     #[test]
@@ -33,8 +34,9 @@ mod tests {
         // TODO: Instantiate a tuple struct!
         let green = ColorTupleStruct("green".to_string(), "#00FF00".to_string());
 
-        assert_eq!(green.0, "green");
-        assert_eq!(green.1, "#00FF00");
+        assert_eq!(green.0, 0);
+        assert_eq!(green.1, 255);
+        assert_eq!(green.2, 0);
     }
 
     #[test]
@@ -43,6 +45,6 @@ mod tests {
         let unit_struct = UnitStruct {};
         let message = format!("{:?}s are fun!", unit_struct);
 
-        assert_eq!(message, "UnitStructs are fun!");
+        assert_eq!(message, "UnitLikeStructs are fun!");
     }
 }
