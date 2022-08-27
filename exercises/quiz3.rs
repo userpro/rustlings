@@ -16,16 +16,17 @@
 
 // I AM NOT DONE
 
-pub struct ReportCard {
-    pub grade: f32,
+use std::fmt;
+
+pub struct ReportCard<T> {
+    pub grade: T,
     pub student_name: String,
     pub student_age: u8,
 }
 
-impl ReportCard {
-    pub fn print(&self) -> String {
-        format!("{} ({}) - achieved a grade of {}",
-            &self.student_name, &self.student_age, &self.grade)
+impl<T> fmt::Display for ReportCard<T> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", self.0);
     }
 }
 
@@ -35,7 +36,7 @@ mod tests {
 
     #[test]
     fn generate_numeric_report_card() {
-        let report_card = ReportCard {
+        let report_card: ReportCard<i32> = ReportCard {
             grade: 2.1,
             student_name: "Tom Wriggle".to_string(),
             student_age: 12,
